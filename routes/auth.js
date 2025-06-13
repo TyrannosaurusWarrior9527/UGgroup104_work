@@ -3,7 +3,7 @@ const router = express.Router();
 const bcrypt = require('bcrypt');
 const db = require('../models/db');
 
-// Register endpoint
+// Register
 router.post('/register', async (req, res) => {
   const { username, password, email } = req.body;
 
@@ -21,7 +21,7 @@ router.post('/register', async (req, res) => {
   }
 });
 
-// Login endpoint
+// Login
 router.post('/login', async (req, res) => {
   const { username, password } = req.body;
 

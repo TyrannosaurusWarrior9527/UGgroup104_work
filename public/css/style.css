@@ -1,4 +1,3 @@
-/* Basic Reset and Layout */
 * {
   margin: 0;
   padding: 0;
