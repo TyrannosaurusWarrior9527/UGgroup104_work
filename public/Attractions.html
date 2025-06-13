@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Attractions</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/swiper-bundle.min.css" />
+</head>
+<style>
+  html,
+  body {
+    position: relative;
+    height: 100%;
+  }
+
+  body {
+    background: #eee;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #000;
+    margin: 0;
+    padding: 0;
+  }
+
+  .swiper {
+    width: 100%;
+    height: 80%;
+  }
+
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .swiper {
+    margin-left: auto;
+    margin-right: auto;
+  }
+</style>
+
+<body>
+  <nav>
+    <img src="images/Adelaide logo.jpg" alt="Adelaide logo">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="Attractions.html">Attractions</a></li>
+      <li><a href="culture.html">Culture</a></li>
+      <li><a href="News.html">News</a></li>
+      <li><a href="book.html">Booking</a></li>
+    </ul>
+  </nav>
+
+  <div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide"><img src="images/Adelaide exhibit1.jpg" alt=""></div>
+      <div class="swiper-slide"><img src="images/Adelaide exhibit2.jpg" alt=""></div>
+      <div class="swiper-slide"><img src="images/Adelaide exhibit3.jpg" alt=""></div>
+      <div class="swiper-slide"><img src="images/Adelaide exhibit4.jpg" alt=""></div>
+      <div class="swiper-slide"><img src="images/Adelaide exhibit5.jpg" alt=""></div>
+    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-pagination"></div>
+  </div>
+
+  <h1 style="text-align: center;">Attractions in Adelaide</h1>
+  <div class="box">
+    <div class="tab">
+    </div>
+    <div class="tabcontent">
+      <style>
+        .tabcontent{
+          font-size: 25px;
+        }
+      </style>
+      <li class="show">
+        <style>
+          .show{
+            text-align: center;
+          }
+        </style>
+        <div>
+          <img src="images/Adelaide botain gardens.jpg" alt="" width="850">
+          <p><span>Adelaide Botanic Garden</span><br>
+            A green haven in the heart of the city, featuring beautiful landscapes, rare plants, and the Bicentennial Conservatory.
+          </p>
+        </div>
+        <div>
+          <img src="images/Adelaide art gallery.jpg" alt="" width="850">
+          <p><span>Art Gallery of South Australia</span><br>
+            Home to one of Australia's best art collections, this gallery showcases Aboriginal, colonial, and contemporary art in a heritage building.
+          </p>
+        </div>
+        <div>
+          <img src="images/Adelaide central market.jpg" alt="" width="850">
+          <p><span>Adelaide Central Market</span><br>
+            A bustling marketplace known for fresh produce, gourmet goods, and multicultural cuisine, loved by both locals and tourists.
+          </p>
+        </div>
+      </li>
+      <li class="hidden">
+        <div>
+          <img src="images/Adelaide glenelg beach.jpg" alt="" width="850">
+          <p><span>Glenelg Beach</span><br>
+            A lively seaside suburb with a white sandy beach, Jetty Road shopping, cafes, and a tram ride from the city center.
+          </p>
+        </div>
+      </li>
+      <li class="hidden">
+        <style>
+          .hidden{
+            text-align: center;
+          }
+        </style>
+        <div>
+          <img src="images/Adelaide lofty summit.jpg" alt="" width="850">
+          <p><span>Mount Lofty Summit</span><br>
+            Offering panoramic views over Adelaide, the summit is perfect for hiking, photography, and bird watching.
+          </p>
+        </div>
+        <div>
+          <img src="images/Adelaide Cleland Wildlife Park.jpg" alt="" width="850">
+          <p><span>Cleland Wildlife Park</span><br>
+            A sanctuary where you can get close to kangaroos, koalas, and native birds in a natural setting.
+          </p>
+        </div>
+        <div>
+          <img src="images/Adelaide kelly hill.jpg" alt="" width="850">
+          <p><span>Kelly Hill Caves</span><br>
+            Explore limestone caves with guided tours that highlight underground chambers and formations.
+          </p>
+        </div>
+      </li>
+    </div>
+  </div>
+
+  <footer>
+    <div class="foot">
+      <div>
+        <h2>Useful Links</h2>
+        <a href="#">South Australia Tourism</a><br>
+        <a href="#">City of Adelaide</a><br>
+        <a href="#">Kangaroo Island Info</a><br>
+      </div>
+      <div>
+        <h2>Contact Us</h2>
+        <p>Phone: +61 8 1234 5678</p>
+        <p>Email: info@adelaidetourism.au</p>
+      </div>
+    </div>
+    <p style="width: 100%;text-align: center;">&copy; Adelaide Tourism</p>
+  </footer>
+  <script src="js/js.js"></script>
+  <script src="js/swiper-bundle.min.js"></script>
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+      slidesPerView: 1,
+      spaceBetween: 30,
+      loop: true,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+      },
+    });
+  </script>
+</body>
+
+</html>

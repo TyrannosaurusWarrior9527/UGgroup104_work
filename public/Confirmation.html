@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Booking Confirmation</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <nav>
+    <img src="images/Adelaide logo.jpg" alt="Adelaide logo">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="Attractions.html">Attractions</a></li>
+      <li><a href="culture.html">Culture</a></li>
+      <li><a href="News.html">News</a></li>
+      <li><a href="book.html">Booking</a></li>
+    </ul>
+  </nav>
+
+  <header>
+    <h1>Thank You for Booking!</h1>
+  </header>
+
+  <main>
+    <section id="booking-info">
+      <h2>Your Booking Details</h2>
+      <p><strong>Traveler Count:</strong> <span id="num">Loading...</span></p>
+      <p><strong>Selected Cities:</strong> <span id="cities">Loading...</span></p>
+      <p><strong>Tour Duration:</strong> <span id="duration">Loading...</span></p>
+      <p><strong>Your Name:</strong> <span id="name">Loading...</span></p>
+      <p><strong>Phone Number:</strong> <span id="phone">Loading...</span></p>
+      <p><strong>Notes:</strong> <span id="notes">Loading...</span></p>
+    </section>
+
+    <section id="weather">
+      <h2>Current Weather in Adelaide</h2>
+      <div id="weather-box">Loading weather...</div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="foot">
+      <div>
+        <h2>Useful Links</h2>
+        <a href="#">South Australia Tourism</a><br>
+        <a href="#">City of Adelaide</a><br>
+      </div>
+      <div>
+        <h2>Contact Us</h2>
+        <p>Phone: +61 8 1234 5678</p>
+        <p>Email: info@adelaidetourism.au</p>
+      </div>
+    </div>
+    <p style="width: 100%; text-align: center;">&copy; Adelaide Tourism</p>
+  </footer>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    document.getElementById("num").textContent = params.get("num") || "-";
+    document.getElementById("cities").textContent = params.get("cities") || "-";
+    document.getElementById("duration").textContent = params.get("duration") || "-";
+    document.getElementById("name").textContent = params.get("name") || "-";
+    document.getElementById("phone").textContent = params.get("phone") || "-";
+    document.getElementById("notes").textContent = params.get("notes") || "-";
+
+    const apiKey = '6b1bb15321cda9ee6f4f7f1b8885a7a6';
+    const lat = -34.9285;
+    const lon = 138.6007;
+
+    fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`)
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("weather-box").innerHTML = `
+          <p><strong>Temperature:</strong> ${data.current.temp} °C</p>
+          <p><strong>Weather:</strong> ${data.current.weather[0].description}</p>
+          <p><strong>Humidity:</strong> ${data.current.humidity}%</p>
+          <p><strong>Wind Speed:</strong> ${data.current.wind_speed} m/s</p>
+        `;
+  })
+  .catch(err => {
+    document.getElementById("weather-box").textContent = "Failed to load weather data.";
+  });
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adelaide Tourism</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/swiper-bundle.min.css" />
+</head>
+<style>
+  html,
+  body {
+    position: relative;
+    height: 100%;
+  }
+
+  body {
+    background: #eee;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #000;
+    margin: 0;
+    padding: 0;
+  }
+
+  .swiper {
+    width: 100%;
+    height: 80%;
+  }
+
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .swiper {
+    margin-left: auto;
+    margin-right: auto;
+  }
+</style>
+
+<body>
+  <nav>
+    <img src="images/Adelaide logo.jpg" alt="Adelaide logo">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="Attractions.html">Attractions</a></li>
+      <li><a href="culture.html">Culture</a></li>
+      <li><a href="News.html">News</a></li>
+      <li><a href="book.html">Booking</a></li>
+    </ul>
+  </nav>
+  <!-- Swiper -->
+  <div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide"><img src="images/Adelaide exhibit1.jpg" alt=""></div>
+      <div class="swiper-slide"><img src="images/Adelaide exhibit2.jpg" alt=""></div>
+      <div class="swiper-slide"><img src="images/Adelaide exhibit3.jpg" alt=""></div>
+      <div class="swiper-slide"><img src="images/Adelaide exhibit4.jpg" alt=""></div>
+      <div class="swiper-slide"><img src="images/Adelaide exhibit5.jpg" alt=""></div>
+    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-pagination"></div>
+  </div>
+  <h1>Popular Areas in Adelaide</h1>
+  <div class="hotCity">
+    <div><img src="images/popular area1.jpg" alt="">
+      <h2>Adelaide CBD</h2>
+    </div>
+    <div><img src="images/popular area2.jpg" alt="">
+      <h2>Glenelg Beach</h2>
+    </div>
+    <div><img src="images/popular area3.jpg" alt="">
+      <h2>Adelaide Hills</h2>
+    </div>
+    <div><img src="images/popular area4.jpg" alt="">
+      <h2>Barossa Valley</h2>
+    </div>
+    <div><img src="images/popular area5.jpg" alt="">
+      <h2>Kangaroo Island</h2>
+    </div>
+  </div>
+  <h1>Top Attractions in Adelaide</h1>
+  <div class="hotAttraction">
+    <div><img src="images/Top attractions1.jpg" alt="">
+      <h2>Adelaide Botanic Garden</h2>
+    </div>
+    <div><img src="images/Top attractions2.jpg" alt="">
+      <h2>Central Market</h2>
+    </div>
+    <div><img src="images/Top attractions3.jpg" alt="">
+      <h2>Adelaide Oval</h2>
+    </div>
+    <div><img src="images/Top attractions4.jpg" alt="">
+      <h2>Art Gallery of SA</h2>
+    </div>
+    <div><img src="images/Top attractions5.jpg" alt="">
+      <h2>Cleland Wildlife Park</h2>
+    </div>
+  </div>
+  <a href="Attractions.html" class="homepage-button">View More</a>
+  <h1>Latest News</h1>
+  <div class="news">
+    <div>
+      <img src="images/news1.jpg" alt="">
+      <h2>Adelaide Food Festival Opens</h2>
+      <span class="published1">Published: 2025-05-01</span>
+      <style>
+        .published1{
+          font-size: 20px;
+        }
+      </style>
+      <p class="p1">The annual Adelaide Food Festival kicks off in the city center, attracting food lovers from all over the country to enjoy wine and cuisine together.</p>
+      <style>
+        .p1{
+          font-size: 20px;
+        }
+      </style>
+    </div>
+    <div>
+      <img src="images/news2.jpg" alt="">
+      <h2>Beauty and the Beast Musical</h2>
+      <span class="published2">Published: 2025-05-08 -- 2025-07-06</span>
+      <style>
+        .published2{
+          font-size: 20px;
+        }
+      </style>
+      <p class="p2">The Disney musical "Beauty and the Beast" tells the romantic story of the beautiful and kind Belle and the cursed beast, who ultimately find happiness.</p>
+      <style>
+        .p2{
+          font-size: 20px;
+        }
+      </style>
+    </div>
+  </div>
+  <a href="News.html" class="homepage-button" style="margin-top: -20px;margin-bottom: 50px;">View More</a>
+  
+  <div id="backTop">TOP</div>
+  <footer>
+    <div class="foot">
+      <div>
+        <h2>Useful Links</h2>
+        <a href="#">South Australia Tourism</a><br>
+        <a href="#">City of Adelaide</a><br>
+        <a href="#">Kangaroo Island Nature Reserve</a><br>
+      </div>
+      <div>
+        <h2>Contact Us</h2>
+        <p>Phone: +61 8 1234 5678</p>
+        <p>Email: info@adelaidetourism.au</p>
+      </div>
+    </div>
+    <p style="width: 100%;text-align: center;">&copy; Adelaide Tourism</p>
+  </footer>
+  <script src="js/js.js"></script>
+  <script src="js/swiper-bundle.min.js"></script>
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+      slidesPerView: 1,
+      spaceBetween: 30,
+      loop: true,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+      },
+    });
+  </script>
+</body>
+
+</html>

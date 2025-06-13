@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Booking</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <nav>
+    <img src="images/Adelaide logo.jpg" alt="Adelaide logo">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="Attractions.html">Attractions</a></li>
+      <li><a href="culture.html">Culture</a></li>
+      <li><a href="News.html">News</a></li>
+      <li><a href="book.html">Booking</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <h1>Tour Booking</h1>
+
+    <div id="login-section">
+      <h2>Login</h2>
+      <label>Username: <input type="text" id="username"></label><br>
+      <label>Password: <input type="password" id="password"></label><br>
+      <button onclick="login()">Login</button>
+      <button onclick="showRegister()">Don't have an account? Register</button>
+      <p id="login-message" style="color: red;"></p>
+    </div>
+
+    <div id="register-section" style="display: none;">
+      <h2>Register</h2>
+      <form id="registerForm">
+        <label>Username: <input type="text" name="username" required></label><br>
+        <label>Password: <input type="password" name="password" required></label><br>
+        <button type="submit">Register</button>
+      </form>
+      <p id="registerMessage"></p>
+      <button onclick="showLogin()">Back to Login</button>
+    </div>
+
+    <form id="booking-form" onsubmit="return false;" style="display:none;">
+      <h2>Booking Form</h2>
+      <label>1. Number of travelers:<br>
+        <input type="radio" name="num" value="1">1
+        <input type="radio" name="num" value="2">2
+        <input type="radio" name="num" value="3">3
+        <input type="radio" name="num" value="4">4
+        <input type="radio" name="num" value="5">5
+      </label><br>
+      <label>2. Select city:<br>
+        <input type="checkbox" name="cities" value="Adelaide">Adelaide
+        <input type="checkbox" name="cities" value="Glenelg">Glenelg
+        <input type="checkbox" name="cities" value="Barossa Valley">Barossa Valley
+        <input type="checkbox" name="cities" value="Kangaroo Island">Kangaroo Island
+        Other: <input type="text" id="otherCity">
+      </label><br>
+      <label>3. Choose tour duration:<br>
+        <select id="duration">
+          <option>- Select -</option>
+          <option>1 Day</option>
+          <option>3 Days 2 Nights</option>
+          <option>5 Days 4 Nights</option>
+          <option>7 Days</option>
+        </select>
+      </label><br>
+      <label>4. Name:<br><input type="text" id="name"></label><br>
+      <label>5. Phone:<br><input type="text" id="phone"></label><br>
+      <label>6. Notes:<br><textarea id="notes"></textarea></label><br>
+      <button type="submit">Submit</button>
+    </form>
+  </main>
+
+  <footer>
+    <div class="foot">
+      <div>
+        <h2>Useful Links</h2>
+        <a href="#">South Australia Tourism</a><br>
+        <a href="#">City of Adelaide</a><br>
+      </div>
+      <div>
+        <h2>Contact Us</h2>
+        <p>Phone: +61 8 1234 5678</p>
+        <p>Email: info@adelaidetourism.au</p>
+      </div>
+    </div>
+    <p style="width: 100%; text-align: center;">&copy; Adelaide Tourism</p>
+  </footer>
+
+  <script>
+    function showRegister() {
+      document.getElementById('login-section').style.display = 'none';
+      document.getElementById('register-section').style.display = 'block';
+    }
+
+    function showLogin() {
+      document.getElementById('register-section').style.display = 'none';
+      document.getElementById('login-section').style.display = 'block';
+    }
+
+    function login() {
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+      const message = document.getElementById("login-message");
+
+      fetch('/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password })
+      })
+      .then(res => res.json())
+      .then(result => {
+        message.textContent = result.message;
+        if (result.message === 'Login successful') {
+          document.getElementById("login-section").style.display = "none";
+          document.getElementById("booking-form").style.display = "block";
+        }
+      });
+    }
+
+    document.getElementById('registerForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const form = e.target;
+      const data = {
+        username: form.username.value,
+        password: form.password.value
+      };
+      const res = await fetch('/api/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      const result = await res.json();
+      document.getElementById('registerMessage').textContent = result.message;
+      if (res.status === 201) showLogin();
+    });
+
+    document.getElementById('booking-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const num = document.querySelector('input[name="num"]:checked')?.value || "-";
+      const checkboxes = document.querySelectorAll('input[name="cities"]:checked');
+      const cities = Array.from(checkboxes).map(cb => cb.value).concat(document.getElementById("otherCity").value).join(', ');
+      const duration = document.getElementById("duration").value;
+      const name = document.getElementById("name").value;
+      const phone = document.getElementById("phone").value;
+      const notes = document.getElementById("notes").value;
+
+      const query = new URLSearchParams({ num, cities, duration, name, phone, notes }).toString();
+      window.location.href = `confirmation.html?${query}`;
+    });
+  </script>
+</body>
+
+</html>
